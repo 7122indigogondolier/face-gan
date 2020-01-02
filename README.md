@@ -113,4 +113,4 @@ Finally we have the boolean images which when true, calls the show images functi
 
 ## Calling the Train Function
 All of the code that actually creates the networks and starts the training process is the train function call at the end of the code. Here, all of the hyperparameter values can be seen and a short description of each variable can be found on the same line as the variable. We store the gan, discriminator, and generator as (gan, d, g). We then convert each network into a json format using the built in .to_json() method call then write a json file with the given using the json-ized networks. This is so we can use the saved models to generate new images or to train further. 
-# face-gan
+
