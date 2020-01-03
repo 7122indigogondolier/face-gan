@@ -24,23 +24,23 @@ We use the glob module to extract all the filenames in the directory of images a
 ## Data Helper Functions
 We created a set of helper functions that were used for various operations on the images and their pixel values, sizes, shapes, etc. 
 
-###load_image:
+### load_image:
 
 load image is the function that was previously mentioned that loads individual images from the directory when given an image size and the filename of that given image. This function both crops and resizes the image as the original image size of (218,178,3) was a very large image and also not an easy size to work with for a clean CNN. We first read the image in from the file name using pyplot's imread function. We then extract the width and height (r and c for rows and columns) of the image as well as the crop size we want to cut the image to. We chose 150 pretty arbitrarily as we saw many other networks use this number and we found that the images cropped to 150x150 still displayed the entirety of the celebrity's face in almost every case. We then run some basic algebra operations based on the size of the images and the size of our cropping area to set image to its newly cropped self. We then resize the cropped image to the image size specified in the function call and return that cropped, resized image. These operations are all extremely important for both minimizing training time of the network and for the ability of the generator and discriminator to be generally clean models with them getting fed in, and spitting out, clean square images. 
 
-###preprocess:
+### preprocess:
 
 This preprocess function is used because our generator uses the tanh activation function, which needs input data in the range of (-1,1) so we first divide the pixel value by 255 so it is between 0 and 1 then we multiply by two and subtract by one which ensures a pixel value in our tanh range. This pixel normalization is extremely important because the activation function would simply be unable to handle any images if the pixel values were not in its range. 
 
-###deprocess:
+### deprocess:
 
 The deprocess function simply does the inverse of preprocess and reverts the pixel values to their unsquashed values so we can display the images later. This is obviously important because we could train the model with pixel values entirely in the tanh range but would never be able to see the images unless we put the pixel values back into their natural range. 
 
-###show_losses:
+### show_losses:
 
 This function takes the losses arrays created in our training method and plots them. This is an important visualization in evaluating the accuracy of our generator, discriminator, and their relative accuracy. These plots are displayed in our paper for different architectures and training iterations. 
 
-###show_images:
+### show_images:
 
 This function takes generated images from our generator and displays them in a plot of 80 randomly selected images. This is another important visualization as the generator and discriminator losses don't always accurately convey the message and sometimes a subjective evaluation of the images created by the generator is a better marker for success than just validation scores and losses. 
 
@@ -49,7 +49,7 @@ This function takes generated images from our generator and displays them in a p
 ## Model Functions
 As this is a generative adversarial network, we had to construct a generator, a discriminator, and then put them together in order to create our GAN. 
 
-###create_generator:
+### create_generator:
 
 This is the function we use to create our generator network. The summary for this architecture can be found in our paper. 
 
@@ -70,7 +70,7 @@ Each one of these transposed convolutional layers can be seen as upsampling the 
 
 Overall, we progressively stepped up this generator from our first test run with output of (32,32,3) up to (64,64,3) and then finally to (128,128,3) because we felt that the increase in training time was well worth the increase in quality as the (32,32,3) was horrible quality, the (64,64,3) was alright but nothing near realistic and (128,128,3) offered a substantial increase over the (64,64,3). 
 
-###create_discriminator:
+### create_discriminator:
 
 This is the function we use to create our discriminator network. The summary for this architecture can be found in our paper. 
 
