@@ -4,7 +4,7 @@ Implemented by : Griffin Noe and Utkrist P. Thapa
 
 Washington and Lee University
 
-CSCI 315, Deep Learning
+
 
 ![Final Result](https://raw.githubusercontent.com/7122indigogondolier/face-gan/master/final.png)
 
