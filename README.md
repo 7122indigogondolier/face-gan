@@ -84,7 +84,7 @@ After the flatten we have a dense layer that serves as the output of the discrim
 
 Much like the generator, we progressively stepped up the size of this network. We started at (64,64,3) and this worked well for the generator creating images of (32,32,3) and (64,64,3) but by the time we bumped the generator to (128,128,3) it no longer made sense to keep the discriminator at (64,64,3). When we added the additional layer the accuracy went up drastically, most likely as the discriminator was more 'evenly matched' with the generator. 
 
-###create_DCGAN:
+### create_DCGAN:
 
 This is the relatively short function that instantiates a generator and discriminator based on the function calls above, compiles the discriminator, assembles the GAN from the generator and discriminiator, then compiles the GAN. 
 
