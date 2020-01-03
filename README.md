@@ -6,6 +6,8 @@ Washington and Lee University
 
 CSCI 315, Deep Learning
 
+![Final Result](https://raw.githubusercontent.com/7122indigogondolier/face-gan/master/final.png)
+
 This is a Python implementation of a DCGAN (Deep Convolutional Generative Adversarial Network) that generates faces in (128,128,3). We use CelebA dataset found here: http://mmlab.ie.cuhk.edu.hk/projects/CelebA.html. This implementation is based on Tensorflow and Keras. 
 
 *Running Notes:
